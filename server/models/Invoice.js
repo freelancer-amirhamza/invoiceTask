@@ -9,9 +9,10 @@ const invoiceSchema = new mongoose.Schema({
     company: String,
     email: String,
     phone: String,
-    trans_date: Date,
+    trans_date: String,
     subtotal:Number,
     taxRate:Number,
+    discountRate:Number,
     total:Number,
     items:[]
 }, { timestamps: true })

@@ -13,13 +13,14 @@ const addInvoice = async (req, res) => {
             subtotal,
             taxRate,
             total,
-            items
+            items,
+            discountRate
         } = req.body;
         const newInvoice = new Invoice({
-            customerId:formData.id,
-            invoice_no:formData.invoice_no,
+            customerId: formData.id,
+            invoice_no: formData.invoice_no,
             cashier: formData.cashier,
-            customer:formData.customer,
+            customer: formData.customer,
             address: formData?.address,
             company: formData.company,
             email: formData.email,
@@ -29,6 +30,7 @@ const addInvoice = async (req, res) => {
             subtotal,
             taxRate,
             total,
+            discountRate,
             items
         });
         await newInvoice.save();
@@ -91,24 +93,34 @@ const updateInvoice = async (req, res) => {
     try {
         const { id } = req.params;
         const {
-            image,
-            name,
-            description,
-            category,
-            price,
-            salePrice,
+            invoiceNumber,
+            formData,
+            subtotal,
+            taxRate,
+            total,
+            items,
+            discountRate
         } = req.body;
 
         // one way
         const invoice = await Invoice.findByIdAndUpdate(
             { _id: id },
             {
-                image,
-                name,
-                description,
-                category,
-                price,
-                salePrice,
+                customerId: formData.id,
+                invoice_no: formData.invoice_no,
+                cashier: formData.cashier,
+                customer: formData.customer,
+                address: formData?.address,
+                company: formData.company,
+                email: formData.email,
+                phone: formData.phone,
+                trans_date: formData.trans_date,
+                invoiceNumber,
+                subtotal,
+                taxRate,
+                total,
+                discountRate,
+                items
             }
         );
         if (!invoice)
