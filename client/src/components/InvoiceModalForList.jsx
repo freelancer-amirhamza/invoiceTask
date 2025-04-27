@@ -47,7 +47,7 @@ const initialData = useMemo(() => {
   
   
   
-    const data = useMemo(() => initialData, [initialData]);
+  const data = useMemo(() => initialData, [initialData]);
   const columns = useMemo(() => headerColumns, []);
   
   const { rows } = useTable({ columns, data });
