@@ -1,9 +1,16 @@
 const app = require("./app");
-const PORT = process.env.PORT || 5000;
 require("dotenv").config();
 
+const PORT = process.env.PORT || 4000;
 
 
-app.listen(PORT,  () =>{
-    console.log(`server is running at http://localhost:${PORT}`)
-}) 
+app.get("/", (req, res)=> {
+    res.send(`<center><h1>Welcome to the Deshi Motors server site</h1></center>`)
+})
+
+
+  
+app.listen(PORT,(req, res)=>{
+    console.log(`Server is running on http://localhost:${PORT}`);
+
+})

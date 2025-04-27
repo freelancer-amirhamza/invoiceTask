@@ -3,7 +3,7 @@ const {
     addInvoice,
     getAllInvoices,
     updateInvoice,getInvoiceDetails,
-    deleteInvoice,} = require("../controllers/invoice-controller");
+    deleteInvoice,} = require("../controllers/invoice-controller.js");
 const router = express.Router();
 
 router.post("/add", addInvoice )
